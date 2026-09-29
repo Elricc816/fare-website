@@ -218,6 +218,173 @@ dialog p{color:var(--mute);margin:12px 0 22px}
   html{scroll-behavior:auto}
   *{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
 }
+
+  /* =========================
+OWNER / DISCORD PROFILE
+========================= */
+
+.owner-section {
+padding: 90px 0;
+}
+
+.owner-card {
+position: relative;
+width: min(100%, 420px);
+margin: 0 auto;
+overflow: hidden;
+border-radius: 18px;
+background: #0b0b0f;
+border: 1px solid rgba(255,255,255,.10);
+box-shadow: 0 25px 80px rgba(0,0,0,.45);
+}
+
+.owner-banner {
+height: 155px;
+background:
+linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.45)),
+#18181d;
+background-size: cover;
+background-position: center;
+}
+
+.owner-body {
+position: relative;
+padding: 0 24px 26px;
+}
+
+.owner-avatar-wrap {
+position: relative;
+width: 104px;
+height: 104px;
+margin-top: -52px;
+margin-bottom: 15px;
+}
+
+.owner-avatar {
+width: 104px;
+height: 104px;
+display: block;
+object-fit: cover;
+border-radius: 50%;
+background: #111116;
+border: 6px solid #0b0b0f;
+}
+
+.owner-decoration {
+position: absolute;
+inset: -13px;
+width: 130px;
+height: 130px;
+object-fit: contain;
+pointer-events: none;
+display: none;
+}
+
+.owner-name-row {
+display: flex;
+align-items: center;
+gap: 9px;
+flex-wrap: wrap;
+}
+
+.owner-name {
+font-size: 25px;
+line-height: 1.1;
+font-weight: 800;
+color: #fff;
+letter-spacing: -.02em;
+}
+
+.owner-badge {
+display: inline-flex;
+align-items: center;
+padding: 5px 9px;
+border-radius: 999px;
+font-family: var(--mono, monospace);
+font-size: 10px;
+font-weight: 800;
+letter-spacing: .08em;
+color: #fff;
+background: rgba(255,255,255,.08);
+border: 1px solid rgba(255,255,255,.12);
+}
+
+.owner-username {
+margin-top: 5px;
+color: rgba(255,255,255,.48);
+font-family: var(--mono, monospace);
+font-size: 13px;
+}
+
+.owner-status {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+margin-top: 15px;
+color: rgba(255,255,255,.65);
+font-family: var(--mono, monospace);
+font-size: 11px;
+}
+
+.owner-status-dot {
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: #747f8d;
+box-shadow: 0 0 10px rgba(116,127,141,.35);
+}
+
+.owner-status-dot.online {
+background: #23a55a;
+box-shadow: 0 0 12px rgba(35,165,90,.55);
+}
+
+.owner-status-dot.idle {
+background: #f0b232;
+box-shadow: 0 0 12px rgba(240,178,50,.45);
+}
+
+.owner-status-dot.dnd {
+background: #f23f42;
+box-shadow: 0 0 12px rgba(242,63,66,.45);
+}
+
+.owner-bio {
+margin: 18px 0 20px;
+color: rgba(255,255,255,.62);
+font-size: 14px;
+line-height: 1.65;
+}
+
+.owner-discord-btn {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+min-height: 46px;
+border-radius: 10px;
+background: #5865f2;
+color: #fff;
+text-decoration: none;
+font-weight: 750;
+transition: transform .2s ease, filter .2s ease;
+}
+
+.owner-discord-btn:hover {
+transform: translateY(-2px);
+filter: brightness(1.08);
+}
+
+@media (max-width: 520px) {
+.owner-section {
+padding: 65px 16px;
+}
+
+.owner-card {
+border-radius: 15px;
+}
+}
+  
 </style>
 </head>
 <body>
@@ -364,6 +531,77 @@ dialog p{color:var(--mute);margin:12px 0 22px}
     </ol>
   </div>
 </section>
+
+  <section class="owner-section" id="owner">
+  <div class="wrap"><div class="eyebrow">THE CREATOR</div>
+
+<h2>Built by Zen.</h2>
+
+<p class="lead">
+  Meet the creator behind Fare.
+</p>
+
+<div class="owner-card">
+
+  <div class="owner-banner" id="ownerBanner"></div>
+
+  <div class="owner-body">
+
+    <div class="owner-avatar-wrap">
+      <img
+        class="owner-avatar"
+        id="ownerAvatar"
+        src=""
+        alt="Zen"
+      >
+
+      <img
+        class="owner-decoration"
+        id="ownerDecoration"
+        src=""
+        alt=""
+      >
+    </div>
+
+    <div class="owner-name-row">
+      <div class="owner-name" id="ownerName">Zen</div>
+      <div class="owner-badge">OWNER</div>
+    </div>
+
+    <div class="owner-username" id="ownerUsername">
+      @ifwzen
+    </div>
+
+    <div class="owner-status">
+      <span
+        class="owner-status-dot"
+        id="ownerStatusDot"
+      ></span>
+
+      <span id="ownerStatus">
+        Discord
+      </span>
+    </div>
+
+    <p class="owner-bio">
+      The creator and developer behind Fare — building
+      minimal, powerful tools for modern Discord communities.
+    </p>
+
+    <a
+      class="owner-discord-btn"
+      href="https://discord.com/users/1530872106399567941"
+      target="_blank"
+      rel="noopener"
+    >
+      View Discord Profile
+    </a>
+
+  </div>
+</div>
+
+  </div>
+  </section>
 
 <section class="sec" id="faq">
   <div class="wrap">
