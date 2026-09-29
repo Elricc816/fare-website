@@ -854,6 +854,19 @@ document.querySelectorAll("[data-dlg]").forEach(b=>b.addEventListener("click",()
 document.querySelectorAll("dialog").forEach(d=>{
   d.addEventListener("click",e=>{if(e.target===d||e.target.hasAttribute("data-close"))d.close()});
 });
+
+  fetch("/api/owner-banner")
+  .then(r => r.json())
+  .then(data => {
+    if (data.banner) {
+      const banner = document.getElementById("ownerBanner");
+      banner.style.backgroundImage = `url("${data.banner}")`;
+      banner.style.backgroundSize = "cover";
+      banner.style.backgroundPosition = "center";
+    }
+  })
+  .catch(err => console.warn("Owner banner failed:", err));
+  
 $("#yr").textContent=new Date().getFullYear();
   
   /* =========================
