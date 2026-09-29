@@ -433,7 +433,7 @@ border-radius: 15px;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation: fareGradient 2s ease-in-out infinite;
+  animation: fareGradient 1.5s ease-in-out infinite;
 }
 
 .loader-bar {
@@ -453,7 +453,7 @@ border-radius: 15px;
   width: 100%;
   height: 100%;
   background: #fff;
-  animation: loadingLine 1.5s linear forwards;
+  animation: loadingLine 1s linear forwards;
 }
 
 @keyframes loadingLine {
@@ -1092,7 +1092,7 @@ loadOwnerProfile();
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("pageLoader").classList.add("hidden");
-  }, 3000);
+  }, 1000);
 });
   </script>
   
