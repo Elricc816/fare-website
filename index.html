@@ -1303,58 +1303,6 @@ window.addEventListener("load", () => {
 </script>
 
 <script>
-const FARE_API =
-  "https://avic-bot-production.up.railway.app/api/servers";
-
-async function loadFareServers() {
-  const track = document.getElementById("serverTrack");
-  if (!track) return;
-
-  try {
-    const response = await fetch(FARE_API);
-    if (!response.ok) throw new Error("Server API failed");
-
-    const data = await response.json();
-
-    if (
-      !data.success ||
-      !Array.isArray(data.servers) ||
-      data.servers.length === 0
-    ) {
-      throw new Error("No servers found");
-    }
-
-    track.innerHTML = "";
-
-    data.servers.forEach(server => {
-      const card = document.createElement("div");
-      card.className = "server-card";
-
-      card.innerHTML = `
-        <img
-          src="${server.icon || "https://cdn.discordapp.com/embed/avatars/0.png"}"
-          alt=""
-        >
-
-        <div class="server-info">
-          <div class="server-name">
-            ${escapeHtml(server.name)}
-          </div>
-
-          <div class="server-members">
-            ${Number(server.members || 0).toLocaleString()} members
-          </div>
-        </div>
-      `;
-
-      track.appendChild(card);
-    });
-
-    const cards = Array.from(track.children);
-
-    cards.forEach(card => {
-      track.appendChild(card.cloneNode(true));
-    });
 
   } catch (error) {
     console.warn("Could not load Fare servers:", error);
@@ -1396,6 +1344,105 @@ if (continueBtn && welcomeOverlay) {
     welcomeOverlay.classList.add("hidden");
   });
 }
+
+<script>
+const FARE_API =
+  "https://avic-bot-production.up.railway.app/api/servers";
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const track = document.getElementById("serverTrack");
+  const continueBtn = document.getElementById("continueBtn");
+  const welcomeOverlay = document.getElementById("welcomeOverlay");
+
+  /* CONTINUE BUTTON */
+  if (continueBtn && welcomeOverlay) {
+    continueBtn.addEventListener("click", () => {
+      welcomeOverlay.classList.add("hidden");
+    });
+  }
+
+  /* LOAD SERVERS */
+  if (!track) return;
+
+  try {
+    const response = await fetch(FARE_API);
+
+    if (!response.ok) {
+      throw new Error("API request failed");
+    }
+
+    const data = await response.json();
+
+    if (!data.success || !data.servers?.length) {
+      throw new Error("No servers returned");
+    }
+
+    track.innerHTML = "";
+
+    data.servers.forEach(server => {
+
+      const card = document.createElement("div");
+      card.className = "server-card";
+
+      const icon = document.createElement("img");
+      icon.src =
+        server.icon ||
+        "https://cdn.discordapp.com/embed/avatars/0.png";
+
+      icon.alt = "";
+
+      const info = document.createElement("div");
+      info.className = "server-info";
+
+      const name = document.createElement("div");
+      name.className = "server-name";
+      name.textContent = server.name;
+
+      const members = document.createElement("div");
+      members.className = "server-members";
+      members.textContent =
+        Number(server.members || 0).toLocaleString() +
+        " members";
+
+      info.appendChild(name);
+      info.appendChild(members);
+
+      card.appendChild(icon);
+      card.appendChild(info);
+
+      track.appendChild(card);
+    });
+
+    /* DUPLICATE CARDS FOR INFINITE SCROLL */
+    const cards = Array.from(track.children);
+
+    cards.forEach(card => {
+      track.appendChild(card.cloneNode(true));
+    });
+
+  } catch (error) {
+
+    console.error("Fare server loading error:", error);
+
+    track.innerHTML = `
+      <div class="server-card">
+        <img
+          src="https://cdn.discordapp.com/embed/avatars/0.png"
+          alt=""
+        >
+        <div class="server-info">
+          <div class="server-name">Fare</div>
+          <div class="server-members">
+            Unable to load servers
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+});
+</script>
   
 </body>
 </html>
