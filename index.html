@@ -650,19 +650,32 @@ overflow: visible;
 }
 
 .visit-symbol{
-  font-size:8px;
-  opacity:.7;
-  animation:visitPulse 1.8s ease-in-out infinite;
+  position:relative;
+  width:10px;
+  height:10px;
+  display:inline-grid;
+  place-items:center;
+  font-size:9px;
+  opacity:.75;
 }
 
-@keyframes visitPulse{
+.visit-symbol::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:50%;
+  animation:visitRingBeat 1.8s ease-out infinite;
+}
+
+@keyframes visitRingBeat{
   0%,100%{
-    transform:scale(1);
-    opacity:.5;
+    transform:scale(.85);
+    opacity:.25;
   }
   50%{
-    transform:scale(1.22);
-    opacity:.9;
+    transform:scale(1.55);
+    opacity:0;
   }
 }
   
