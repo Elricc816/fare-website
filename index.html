@@ -652,6 +652,18 @@ overflow: visible;
 .visit-symbol{
   font-size:8px;
   opacity:.7;
+  animation:visitPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes visitPulse{
+  0%,100%{
+    transform:scale(1);
+    opacity:.5;
+  }
+  50%{
+    transform:scale(1.22);
+    opacity:.9;
+  }
 }
   
 #welcomeOverlay.hidden {
