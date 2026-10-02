@@ -1,14 +1,14 @@
-import { Redis } from "@upstash/redis";
-
-const redis = Redis.fromEnv();
-
 export default async function handler(req, res) {
   try {
-    const visits = await redis.incr("fare_website_visits");
+    const response = await fetch(
+      "https://api.counterapi.dev/v1/farewaves/visits/up"
+    );
+
+    const data = await response.json();
 
     res.status(200).json({
       success: true,
-      visits
+      visits: data.count
     });
   } catch (error) {
     console.error(error);
