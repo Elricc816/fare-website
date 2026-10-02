@@ -650,43 +650,21 @@ overflow: visible;
 }
 
 .visit-symbol{
-  position:relative;
-  width:11px;
-  height:11px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-size:11px;
+  display:inline-block;
+  font-size:10px;
   line-height:1;
-  opacity:.75;
+  opacity:.7;
+  animation:visitBeat 1.6s ease-in-out infinite;
 }
 
-.visit-symbol::after{
-  content:"";
-  position:absolute;
-  width:11px;
-  height:11px;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) scale(.8);
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:50%;
-  pointer-events:none;
-  animation:visitRingBeat 1.8s ease-out infinite;
-}
-
-@keyframes visitRingBeat{
-  0%{
-    transform:translate(-50%,-50%) scale(.75);
+@keyframes visitBeat{
+  0%,100%{
+    transform:scale(1);
     opacity:.55;
   }
-  60%{
-    transform:translate(-50%,-50%) scale(1.45);
-    opacity:0;
-  }
-  100%{
-    transform:translate(-50%,-50%) scale(1.45);
-    opacity:0;
+  50%{
+    transform:scale(1.25);
+    opacity:.9;
   }
 }
   
