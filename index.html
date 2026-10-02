@@ -1807,5 +1807,22 @@ window.addEventListener("load", function () {
   targets.forEach(el=>io.observe(el));
 })();
 </script>
+
+<script>
+const visitCount = document.getElementById("visitCount");
+
+let fakeVisits = 372;
+
+function updateFakeVisits() {
+  const change = Math.random() < 0.5 ? -1 : 1;
+  fakeVisits += change;
+
+  visitCount.textContent = fakeVisits.toLocaleString();
+}
+
+updateFakeVisits();
+setInterval(updateFakeVisits, 12000);
+</script>
+  
 </body>
 </html>
