@@ -188,7 +188,22 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px}
 .foot li{color:var(--mute);font-size:.94rem}
 .foot li b{color:var(--ink);font-weight:600}
 .fare-credit{margin-top:42px;text-align:center;color:rgba(255,255,255,.78);font-size:clamp(1.15rem,2.7vw,2rem);font-weight:800;letter-spacing:-.03em}
-.fare-credit .heart{display:inline-block;color:#ff365f;font-size:.78em;line-height:1;vertical-align:baseline;transform-origin:center;animation:fareHeartBeat 1.35s ease-in-out infinite}
+.fare-credit .heart{
+  color:#ff365f;
+  display:inline-block;
+  font-size:.8em;
+  line-height:1;
+  vertical-align:.05em;
+  position:relative;
+  top:1px;
+  animation:heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  15%{transform:scale(1.12)}
+  30%{transform:scale(1)}
+}
 @keyframes fareHeartBeat{0%,100%{transform:scale(1)}12%{transform:scale(1.12)}24%{transform:scale(.96)}36%{transform:scale(1.08)}52%{transform:scale(1)}}
 .fare-copyright{margin-top:34px;text-align:center;color:rgba(255,255,255,.34);font-family:"Courier New",ui-monospace,monospace;font-size:clamp(.8rem,1.6vw,1.2rem);letter-spacing:1.4px;line-height:1.8}
 
@@ -1196,7 +1211,7 @@ overflow: visible;
       <span>© <span id="yr">2026</span> Fare. Developed by Zen.</span>
       <span>Not affiliated with Discord Inc.</span>
     </div>
-    <div class="fare-credit">Made with <span class="heart" aria-label="heart">&lt;3</span> by Zen.</div>
+<div class="fare-credit">Made with <span class="heart">&lt;3</span> by Zen.</div>
     <div class="fare-copyright">@Fare Development © 2026. All rights<br class="fare-copyright-break">reserved.</div>
   </div>
 </footer>
