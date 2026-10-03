@@ -6,21 +6,12 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    console.log("CounterAPI response:", data);
-
-    const visits =
-      data?.count ??
-      data?.value ??
-      data?.data?.count ??
-      data?.data?.value ??
-      data?.data;
-
     res.status(200).json({
       success: true,
-      visits: Number(visits) || 0
+      visits: Number(data.value) || 0
     });
   } catch (error) {
-    console.error("Visit counter error:", error);
+    console.error(error);
 
     res.status(500).json({
       success: false,
